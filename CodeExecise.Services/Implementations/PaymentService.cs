@@ -7,30 +7,9 @@ namespace CodeExecise.Services.Implementations
 {
     public class PaymentService : IPaymentService
     {
-        private static byte RandomByte()
-        {
-            using (var randomizationProvider = new RNGCryptoServiceProvider())
-            {
-                var randomBytes = new byte[1];
-                randomizationProvider.GetBytes(randomBytes);
-                return randomBytes.Single();
-            }
-        }
-
         public string WhatsYourId()
         {
-            const int length = 10;
-            const string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var outOfRange = Byte.MaxValue + 1 - (Byte.MaxValue + 1) % alphabet.Length;
-
-            return string.Concat(
-                Enumerable
-                    .Repeat(0, Int32.MaxValue)
-                    .Select(e => RandomByte())
-                    .Where(randomByte => randomByte < outOfRange)
-                    .Take(length)
-                    .Select(randomByte => alphabet[randomByte % alphabet.Length])
-            );
+            return "E4ADE275-03EE-4C86-82A9-6649C11AF920";
         }
 
         public bool IsCardNumberValid(string cardNumber)
