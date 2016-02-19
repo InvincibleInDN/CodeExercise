@@ -21,19 +21,13 @@ namespace CodeExercise.Tests.Controllers
 
         #region "WhatsYourId Tests"
 
-        [TestCase(1000000)]
-        public void WhatsYourId(int upperLimit)
+        public void WhatsYourId()
         {
-            var uniqueIds = new List<string>();
-            for (var i = 0; i < upperLimit; i++)
-            {
-                var response = _paymentController.WhatsYourId();
-                string uniqueId;
-                if (response.TryGetContentValue(out uniqueId))
-                    uniqueIds.Add(uniqueId);
-            }
+            var response = _paymentController.WhatsYourId();
+            string uniqueId;
+            if (response.TryGetContentValue(out uniqueId)) ;
 
-            Assert.AreEqual(uniqueIds.Distinct().Count(), upperLimit);
+            Assert.AreEqual("E4ADE275-03EE-4C86-82A9-6649C11AF920", uniqueId);
         }
 
         #endregion
